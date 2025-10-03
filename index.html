@@ -112,7 +112,30 @@ table {
   </html>
         
           </pre>
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>Change Button Colour</title>
+  </head>
+  <body>
+    <button id="colorButton">Click me to change colour</button>
 
+  <script>
+    // Get a refrence to the button colour
+    function changeColor() {
+      //Generae a random colour (hexadecimal)
+      var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+
+      //Set the button's background color to the random color
+      button.style.backgroundColor = randomColor;
+    }
+
+    //Add a click event listener to the button
+    button.addEventListener("click", changeColor);
+  </script>
+</body>
+</html>
+  
 
 
       
