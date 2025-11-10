@@ -442,6 +442,41 @@ body::after {
 .banner {
   display: block;
   margin: 0 auto;
+  /* Header layout */
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Banner image style */
+.banner {
+  width: 220px; /* you can change this size if needed */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+  mix-blend-mode: screen; /* makes white edges blend with dark bg */
+}
+
+/* Title text */
+.header-text h1, 
+.header-text h2 {
+  margin: 0;
+  color: white;
+  text-shadow: 0 0 10px rgba(255,255,255,0.6);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 700px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(255,255,255,0.3);
   mix-blend-mode: screen;
