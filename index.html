@@ -348,3 +348,197 @@ button.addEventListener("click", changeColor);
 </html>
 
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENG0018 Computer Laboratory 2025/26</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Body & starry background */
+    body {
+      background-color: black;
+      background-image: radial-gradient(white 1px, transparent 1px),
+                        radial-gradient(white 1px, transparent 1px),
+                        radial-gradient(white 1px, transparent 1px);
+      background-position: 0 0, 20px 20px, 40px 50px;
+      background-size: 60px 60px;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      text-shadow: 0 0 15px rgba(255,255,255,0.8);
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    /* Table of Contents */
+    .toc {
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+    }
+    .toc h3 {
+      margin-bottom: 1rem;
+      text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    }
+    .toc ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .toc li + li { margin-top: 0.75rem; }
+    .toc a {
+      color: #81d4fa;
+      text-decoration: none;
+    }
+    .toc a:hover { text-decoration: underline; }
+
+    /* Content sections */
+    .content-section {
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(255,255,255,0.1);
+    }
+    .content-section h4 {
+      margin-bottom: 1rem;
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 4px;
+      background-color: #E63946;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn:hover { background-color: #c2333d; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin: 3rem 0 1rem;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ENG0018 Computer Laboratory 2025/26</h1>
+    <p>Student URN: 6923558</p>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <h2>The Mathematics behind the Expanding Universe</h2>
+    </section>
+
+    <nav class="toc">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#abstract">1. Abstract</a></li>
+        <li><a href="#introduction">2. Introduction</a></li>
+        <li><a href="#analysis">3. Analysis & Discussion</a></li>
+        <li><a href="#references">4. References</a></li>
+      </ul>
+    </nav>
+
+    <article id="abstract" class="content-section">
+      <h4>Abstract</h4>
+      <p>This is where the abstract goes.</p>
+    </article>
+
+    <article id="introduction" class="content-section">
+      <h4>Introduction</h4>
+      <p>This is where the introduction goes.</p>
+    </article>
+
+    <article id="analysis" class="content-section">
+      <h4>Analysis & Discussion</h4>
+      <p>This is where the analysis & discussion goes.</p>
+    </article>
+
+    <article id="references" class="content-section">
+      <h4>References</h4>
+      <p>This is where the references go.</p>
+    </article>
+
+    <section class="interactive-section">
+      <h3>Interactive Tools</h3>
+      <button id="colourBtn" class="btn">Change Button Colour</button>
+      <button id="alertBtn" class="btn">Show Alert</button>
+
+      <div class="rng">
+        <button id="rngBtn" class="btn">Generate Random Number</button>
+        <p id="rngOutput"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Last updated: <time id="lastModified"></time></p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Last modified date
+      document.getElementById('lastModified').textContent = new Date(document.lastModified).toLocaleString();
+
+      // Change button color
+      document.getElementById('colourBtn').addEventListener('click', function() {
+        const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+        this.style.backgroundColor = randomColor;
+      });
+
+      // Show alert
+      document.getElementById('alertBtn').addEventListener('click', function() {
+        alert('Hello! This is your alert message.');
+      });
+
+      // Random number generator
+      document.getElementById('rngBtn').addEventListener('click', function() {
+        const num = Math.floor(Math.random()*100) + 1;
+        document.getElementById('rngOutput').textContent = 'Generated number: ' + num;
+      });
+    });
+  </script>
+
+</body>
+</html>
+
