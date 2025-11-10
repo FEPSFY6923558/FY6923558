@@ -434,30 +434,3 @@ body::after {
   animation: twinkle 5s infinite;
   pointer-events: none; /* ensures clicks pass through */
 }
-</style>
-
-<div class="content-section interactive-section">
-  <h3>Interactive Tools</h3>
-  <button id="colorButton">Click me to change colour</button>
-</div>
-<script>
-// Get reference to the button
-var colorButton = document.getElementById("colorButton");
-
-// Function to change the button color
-function changeColor() {
-  // Generate a random color (hex)
-  var randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-  // Apply it to the button background
-  colorButton.style.backgroundColor = randomColor;
-}
-
-// Add click event listener
-colorButton.addEventListener("click", changeColor);
-</script>
-#colorButton:hover {
-  filter: brightness(1.1);
-}
-
-
-
