@@ -46,7 +46,8 @@ table {
         .mySlides {display:none;}
     </style>
    
-    <body style="background-color:#B3B6C9;margin-left:50px;">
+<body>
+
     </body>
 
 
@@ -384,7 +385,10 @@ table {
 }
 td, th {
   border: 1px solid #B3B6C9;
-  padding: 8px;
+  padding: 8px;#
+
+
+
   color: white;
 }
 tr:nth-child(even) {
@@ -411,6 +415,38 @@ a {
 }
 a:hover {
   color: #bbdefb;
+}
+</style>
+<div class="content-section">
+  <h3 id="Abstract">Abstract</h3>
+  <p>This is where the abstract will go.</p>
+</div>
+
+<div class="content-section">
+  <h3 id="Introduction">Introduction</h3>
+  <p>This is where the introduction will go.</p>
+</div>
+
+<div class="content-section">
+  <h3 id="Analysis and Discussion">Analysis and Discussion</h3>
+  <p>This is where the analysis and discussion will go.</p>
+</div>
+<style>
+@keyframes twinkle {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: radial-gradient(white 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.5;
+  animation: twinkle 5s infinite;
+  pointer-events: none; /* ensures clicks pass through */
 }
 </style>
 
