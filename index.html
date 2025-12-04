@@ -536,3 +536,31 @@ body::after {
     border-radius: 6px;  /* optional */
 }
 
+<!-- === Image placed below all text, left-aligned === -->
+<figure class="below-text-left">
+  <img src="fate-universe-graph.png" alt="Expansion of the Universe graph">
+  <figcaption>Figure: Expansion scenarios</figcaption>
+</figure>
+/* ensure this appears below text and aligns to the left */
+.below-text-left {
+  display: block;           /* ensure block-level placement */
+  margin: 18px 0 40px 0;    /* top, right, bottom, left margins */
+  padding: 0;
+  max-width: 100%;
+}
+
+.below-text-left img {
+  display: block;           /* prevents inline gap */
+  width: 420px;             /* control image size - change as needed */
+  max-width: 100%;          /* responsive on small screens */
+  height: auto;
+  margin-left: 0;           /* flush left inside container */
+  border-radius: 4px;       /* optional look */
+}
+
+.below-text-left figcaption {
+  font-size: 12px;
+  color: #ccc;              /* adjust to suit theme */
+  margin-top: 6px;
+  margin-left: 0;
+}
