@@ -506,4 +506,33 @@ body::after {
     line-height: 1.6;
 }
 
+<div class="fate-section">
+    <div class="fate-text">
+        <h2>The Fate of the Universe: Math Predicts the End</h2>
+        <p>
+            NASA Goddard Space Flight Centre (n.d.) explains that there are two possible fates for the universe:
+            Endless expansion and the 'Big Crunch'. The evolution of the universe is determined by a struggle
+            between the momentum of expansion and the pull (or push) of gravity...
+        </p>
+    </div>
+
+    <div class="fate-image">
+        <img src="fate-universe-graph.png" alt="Expansion of the Universe graph">
+    </div>
+</div>
+.fate-section {
+    display: flex;
+    gap: 20px;           /* space between text and image */
+    align-items: flex-start;
+}
+
+.fate-text {
+    width: 60%;          /* text takes up 60% of the area */
+}
+
+.fate-image img {
+    width: 300px;        /* control how big the image looks */
+    height: auto;
+    border-radius: 6px;  /* optional */
+}
 
