@@ -165,80 +165,7 @@ https://map.gsfc.nasa.gov/universe/uni_fate.html?utm_source=chatgpt.com
   </html>
         
 </pre>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Change Button Colour</title>
-</head>
-<body>
-<button id="colorButton">Click me to change colour</button>
-<script>
-// Get a reference to the button element
-var button = document.getElementById("colorButton");
-// Function to change the button color
-function changeColor() {
-// Generate a random color (hexadecimal)
-var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-// Set the button's background color to the random color
-button.style.backgroundColor = randomColor;
-}
-// Add a click event listener to the button
-button.addEventListener("click", changeColor);
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Alert Input Text</title>
-</head>
-<body>
-  <input type="text" id="textInput" placeholder="Enter text">
-  <button id="alertButton">Show Alert</button>button>
 
-  <script>
-    //Get refrences to the input field and button
-    var input = document.getElementById("textInput") ;
-    var button = document.getElementById("alertButton");
-
-    //Function to show an alert wit the input text
-    function showAlert() {
-      var inputText = input.value;
-      alert("You entered: " + inputText);
-    }
-    //Add a click event listener to the button
-    button.addEventListener("click", showAlert);
- </script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Random Number Generator</title>
-</head>
-<body>
-  <button id="generateButton">Generate Random Number</button>
-  <p id="randomNumber"></p>
-
-  <script>
-    //Get a refrence to the button and paragraph
-    var button = document.getElementById("generateButton");
-    var paragraph = document.getElementById("randomNumber");
-
-    //Function to generate and display a random number
-    function genrateRandomNumber() {
-      var randomNumber = Math.floor(Math.random() * 10) + 1;
-      paragraph.textContent = "Random Number: " + randomNumber;
-    }
-    //Add a click event listener to the button
-    button.addEventListener("click", generateRandomNumber);
- </script>
-</body>
-</html>
-
-'<head>'
-'</head>
 <!-- //////////////////////////////////////////////////////////////////////////////// -->
   <!-- ////////////////////////////// Adding last update ////////////////////////////// -->
   <!-- //////////////////////////////////////////////////////////////////////////////// -->
@@ -459,42 +386,4 @@ body::after {
 }
 
 
-</script>
-<div id="last-updated">Loading last update time...</div>
-
-<button id="verifyLastUpdatedBtn" 
-        style="display:block; margin:10px auto; padding:8px 16px;">
-  Verify Last Modified Time
-</button>
-
-<script>
-async function getLastUpdatedTime() {
-    const username = 'nr0025';
-    const repo = 'FY0025';
-    const url = `https://api.github.com/repos/${username}/${repo}/commits`;
-
-    try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error();
-
-        const data = await response.json();
-        const lastDate = new Date(data[0].commit.committer.date);
-        document.getElementById('last-updated').textContent =
-            "Last Modified Time: " + lastDate.toLocaleString();
-    } catch {
-        document.getElementById('last-updated').textContent =
-            "Error fetching update time.";
-    }
-}
-
-async function verifyLastUpdatedTime() {
-    document.getElementById('last-updated').textContent = "Verifying...";
-    await getLastUpdatedTime();
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    getLastUpdatedTime();
-    document.getElementById("verifyLastUpdatedBtn")
-        .addEventListener("click", verifyLastUpdatedTime);
-});
-</script>
+     
