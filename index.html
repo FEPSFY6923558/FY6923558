@@ -385,92 +385,139 @@ body::after {
     line-height: 1.6;
 }
 
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Word Count Fix</title>
-  <style>
-    /* tiny styles just for the demo */
-    body { font-family: Arial, sans-serif; padding: 20px; background:#000;color:#fff }
-    .content-section { background: rgba(255,255,255,0.03); padding:16px; border-radius:6px; margin-bottom:12px; }
-    #totalWordCount { margin-top: 10px; font-weight:700; }
-    button { margin-top:8px; padding:6px 10px; border-radius:5px; border:none; cursor:pointer; }
-  </style>
-</head>
-<body>
+<script>
+(function() {
+  // Map human-visible section headings -> desired ID
+  const SECTION_MAP = {
+    'Abstract': 'Abstract_InText',
+    'Introduction': 'Introduction_InText',
+    'Analysis and Discussion': 'Analysis_InText', // matches your heading text
+    // add more mappings if you want (e.g. 'References': 'References_InText')
+  };
 
-  <h1>ENG0018 — Conference paper (demo)</h1>
+  // Utility: find a heading node by exact text (case-insensitive trim)
+  function findHeadingByText(text) {
+    const wanted = text.trim().toLowerCase();
+    const headings = document.querySelectorAll('h1,h2,h3,h4,h5,h6');
+    for (const h of headings) {
+      if ((h.textContent || '').trim().toLowerCase() === wanted) return h;
+    }
+    return null;
+  }
 
-  <div class="content-section" id="Abstract_InText">
-    <h3>Abstract</h3>
-    <p> This page summarises how the universe expands; to start with, the Hubble's discovery that galaxies are moving away from us when their light is redshifted. This shows how the scale factor and Friedmann's equations display the growth of the Universe and illustrate the different possible shapes of the universe. It also highlights how matter density and dark energy can change the universe's evolution and its potential long-term fate. </p>
-  </div>
+  // Assign the target ID to a sensible content node AFTER the heading:
+  // Prefer the immediate nextElementSibling; if that's a heading or null, try the next paragraph or div.
+  function ensureSectionIdForHeading(headingText, targetId) {
+    // if element with targetId already exists, do nothing
+    if (document.getElementById(targetId)) return;
 
-  <!-- IMPORTANT: these IDs are used by the script -->
-  <div class="content-section" id="Introduction_InText">
-    <h3>Introduction</h3>
-    <p>Our understanding of the universe has transformed dramatically since the early twentieth century. Einstein's theory provides a new framework for describing gravity. On the other hand, Edwin Hubble's observations revealed the true scale of the cosmos. Galaxies beyond the Milky Way were moving away from us due to redshift, indicating that the universe is expanding. Hubble's law forms the foundations of modern cosmology.</p>
-  </div>
+    const h = findHeadingByText(headingText);
+    if (!h) return; // can't find heading; skip silently
 
-  <div class="content-section" id="Analysis_InText">
-    <h3>Analysis and Discussion</h3>
-    <p>Hubble’s Law and Redshift: Math of the Expanding Universe. The Doppler shift is the change in wavelength of observed light due to relative motion between source and observer. After analysing the redshifts of Cepheids, Hubble concluded galaxies are receding — v = H₀ D — where H₀ is the Hubble constant.</p>
-  </div>
+    // try immediate sibling
+    let candidate = h.nextElementSibling;
+    // if the sibling is a heading or doesn't exist, search forward a few siblings for a non-heading block
+    let safety = 0;
+    while (candidate && /^H[1-6]$/i.test(candidate.tagName) && safety < 6) {
+      candidate = candidate.nextElementSibling;
+      safety++;
+    }
 
-  <!-- Place to show the total -->
-  <div id="totalWordCount">Total word count: 0</div>
-  <button id="recalcBtn">Recalculate word count</button>
-
-  <script>
-    // Safe word-count routine: counts words from chosen element IDs and updates #totalWordCount
-    (function() {
-      const sectionIds = ['Introduction_InText', 'Analysis_InText']; // change/add IDs as needed
-
-      function getTextFromId(id) {
-        const el = document.getElementById(id);
-        return el ? el.textContent : '';
-      }
-
-      function countWords(text) {
-        // Normalize whitespace, remove multiple spaces/newlines and split
-        const trimmed = String(text).trim();
-        if (trimmed === '') return 0;
-        // split on any whitespace sequence
-        const words = trimmed.split(/\s+/);
-        return words.length;
-      }
-
-      function updateTotal() {
-        let total = 0;
-        const details = {}; // optional: per-section counts if you want to show them
-        for (const id of sectionIds) {
-          const txt = getTextFromId(id);
-          const c = countWords(txt);
-          details[id] = c;
-          total += c;
+    // If still no candidate, try searching forward for first <p> or <div>
+    if (!candidate || (/^H[1-6]$/i.test(candidate.tagName))) {
+      const walker = document.createTreeWalker(h.parentNode, NodeFilter.SHOW_ELEMENT, {
+        acceptNode: function(node) {
+          const tag = node.tagName ? node.tagName.toLowerCase() : '';
+          if (node === h) return NodeFilter.FILTER_REJECT;
+          if (['p','div','section','article','main','ul','ol','table'].includes(tag)) return NodeFilter.FILTER_ACCEPT;
+          return NodeFilter.FILTER_SKIP;
         }
-        const out = document.getElementById('totalWordCount');
-        if (out) {
-          out.textContent = `Total word count: ${total} (breakdown: ${JSON.stringify(details)})`;
-        } else {
-          console.log('Total word count:', total, details);
-        }
+      });
+      let n;
+      while ((n = walker.nextNode())) {
+        if (n.compareDocumentPosition(h) & Node.DOCUMENT_POSITION_FOLLOWING) { candidate = n; break; }
       }
+    }
 
-      // run on load
-      window.addEventListener('DOMContentLoaded', updateTotal);
-      // also bind to button for recompute after edits
-      const btn = document.getElementById('recalcBtn');
-      if (btn) btn.addEventListener('click', updateTotal);
+    // If we found something, set the id
+    if (candidate) candidate.id = targetId;
+    // If no candidate found, as a last resort create an invisible anchor after the heading
+    else {
+      const anchor = document.createElement('span');
+      anchor.id = targetId;
+      // small invisible spacer so it doesn't change layout
+      anchor.style.display = 'none';
+      h.insertAdjacentElement('afterend', anchor);
+    }
+  }
 
-      // expose for debugging if needed
-      window._updateWordCount = updateTotal;
-    })();
-  </script>
+  // Word count helper
+  function countWordsFromText(text) {
+    if (!text) return 0;
+    const trimmed = String(text).trim();
+    if (trimmed === '') return 0;
+    return trimmed.split(/\s+/).length;
+  }
 
-</body>
-</html>
+  // The main updater: ensures IDs exist, counts words, updates #totalWordCount
+  function updateWordCounts() {
+    // Ensure the mapped sections have IDs (adds them if missing)
+    for (const [title, id] of Object.entries(SECTION_MAP)) {
+      ensureSectionIdForHeading(title, id);
+    }
 
-     
+    // Ensure there's a #totalWordCount element to update
+    let out = document.getElementById('totalWordCount');
+    if (!out) {
+      out = document.createElement('div');
+      out.id = 'totalWordCount';
+      // place near end of body (non-invasive)
+      document.body.appendChild(out);
+    }
+
+    // Count words for each mapped section (if the element exists)
+    let total = 0;
+    const breakdown = {};
+    for (const id of Object.values(SECTION_MAP)) {
+      const el = document.getElementById(id);
+      const text = el ? el.textContent : '';
+      const c = countWordsFromText(text);
+      breakdown[id] = c;
+      total += c;
+    }
+
+    // Update output (compact breakdown)
+    out.textContent = `Total word count: ${total} (breakdown: ${JSON.stringify(breakdown)})`;
+  }
+
+  // Add a small recalc button if not already present (non-destructive)
+  function ensureRecalcButton() {
+    if (document.getElementById('recalcWordCountBtn')) return;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'recalcWordCountBtn';
+    btn.textContent = 'Recalculate word count';
+    // minimal style so it inherits your page appearance
+    btn.style.margin = '8px 0';
+    btn.addEventListener('click', updateWordCounts);
+    // append near the total if present, otherwise to the body end
+    const out = document.getElementById('totalWordCount');
+    if (out && out.parentNode) out.parentNode.insertBefore(btn, out.nextSibling);
+    else document.body.appendChild(btn);
+  }
+
+  // Run after DOM ready
+  window.addEventListener('DOMContentLoaded', function() {
+    try {
+      updateWordCounts();
+      ensureRecalcButton();
+    } catch (e) {
+      // Fail silently but log to console for debugging
+      console.error('Word-count helper error:', e);
+    }
+  });
+
+  // Expose a global function for debugging / manual invocation
+  window.recomputeMyWordCount = updateWordCounts;
+})();
+</script>
