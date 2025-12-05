@@ -396,22 +396,3 @@ body::after {
 </body>
 </html>
 
-<h3>Presentation Video</h3>
-
-<button onclick="toggleVideo()" 
-        style="padding:10px 20px; font-size:16px;">
-  Show/Hide Video
-</button>
-
-<div id="videoContainer" style="display:none; margin-top:10px;">
-  <video width="640" controls>
-    <source src="freecompress-ENG0018%20Presentation.mp4" type="video/mp4">
-  </video>
-</div>
-
-<script>
-function toggleVideo() {
-  const vid = document.getElementById("videoContainer");
-  vid.style.display = vid.style.display === "none" ? "block" : "none";
-}
-</script>
