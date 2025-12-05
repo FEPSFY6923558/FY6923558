@@ -104,55 +104,6 @@ The Physics of the Universe (n.d.) describes that Albert Einstein had formulated
   
 Peacock (1999) explains that the equation for the scale factor's motion is derived in a quasi-Newtonian manner. If we consider a sphere at some arbitrary point, we let the radius be R, where r is arbitrary. The motion of a point at the edge of the sphere will, in Newtonian gravity, be influenced only by the interior mass. We can write down immediately a differential equation, which is Friedmann's equations that expresses conservation of energy, r)2 / 2 - GM / (Rr) = constant. The Friedmann equation shows that a universe that is spatially closed (with k = +1) has negative total 'energy': the expansion will eventually halt due to gravity, and the universe will re-collapse. An unbound model is spatially open (k = -1) and will expand forever. Thus, the dynamics of the entire universe are the same as those of a cannonball fired vertically against the Earth's gravity. The Earth's gravity defines an escape velocity for projectiles, so a universe that expands fast will continue to expand forever.</p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  <h2>Flat, Open, or Closed? The Geometry of the Universe</h2>
   <p>
   
@@ -434,4 +385,101 @@ body::after {
   }
   // Run the function for specific sections and display total count when the page loads
   window.onload = displayTotalWordCount;
+</script>
+
+<script>
+/* ======= Configuration ======= */
+const GITHUB_USERNAME = 'nr0025';
+const GITHUB_REPO = 'FY0025';
+
+/* ======= Helpers ======= */
+function safeText(id, defaultText = '') {
+  const el = document.getElementById(id);
+  return el ? el : null;
+}
+
+/* ======= GitHub last-updated logic ======= */
+async function getLastUpdatedTime(username = GITHUB_USERNAME, repo = GITHUB_REPO) {
+  const targetEl = document.getElementById('last-updated');
+  if (!targetEl) return; // nothing to update
+
+  const url = `https://api.github.com/repos/${username}/${repo}/commits`;
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: { 'Accept': 'application/vnd.github.v3+json' }
+    });
+
+    if (!response.ok) {
+      // handle rate limits or not-found gracefully
+      targetEl.innerText = `Could not fetch commits: ${response.status} ${response.statusText}`;
+      return;
+    }
+
+    const commits = await response.json();
+    if (Array.isArray(commits) && commits.length > 0 && commits[0].commit && commits[0].commit.committer) {
+      const lastCommitDate = new Date(commits[0].commit.committer.date);
+      targetEl.innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
+    } else {
+      targetEl.innerText = 'No commits found in the repository.';
+    }
+  } catch (err) {
+    console.error('Error fetching last updated time:', err);
+    targetEl.innerText = 'Error fetching update time. Check console for details.';
+  }
+}
+
+async function verifyLastUpdatedTime() {
+  const targetEl = document.getElementById('last-updated');
+  if (targetEl) targetEl.innerText = 'Verifying...';
+  await getLastUpdatedTime();
+  // Best keep the alert optional; uncomment if you want it.
+  // alert("Last modified time has been successfully verified from GitHub API.");
+}
+
+/* ======= Word count logic ======= */
+function countWordsInElementById(id) {
+  const el = document.getElementById(id);
+  if (!el) return 0;
+  // Use textContent to ignore HTML tags; collapse whitespace
+  const text = el.textContent || '';
+  const trimmed = text.trim();
+  if (!trimmed) return 0;
+  return trimmed.split(/\s+/).length;
+}
+
+function displayTotalWordCount() {
+  // IDs to count — change these to match the IDs you actually use
+  const idsToCount = ['Introduction_InText', 'Analysis_InText'];
+
+  let total = 0;
+  idsToCount.forEach(id => {
+    const count = countWordsInElementById(id);
+    total += count;
+
+    // optionally show individual counts if you want elements for them:
+    const perEl = document.getElementById(id + '_count'); // e.g. Introduction_InText_count
+    if (perEl) perEl.innerText = `Words: ${count}`;
+  });
+
+  const totalEl = document.getElementById('totalWordCount');
+  if (totalEl) totalEl.innerText = `Total word count: ${total}`;
+}
+
+/* ======= Initialise everything on DOMContentLoaded ======= */
+document.addEventListener('DOMContentLoaded', () => {
+  // load last-updated on page load
+  getLastUpdatedTime();
+
+  // wire the verify button (if it exists)
+  const verifyBtn = document.querySelector('[onclick="verifyLastUpdatedTime()"]') || document.getElementById('verifyLastUpdatedBtn');
+  if (verifyBtn) {
+    // remove inline onclick and attach a safer listener
+    verifyBtn.removeAttribute('onclick');
+    verifyBtn.addEventListener('click', verifyLastUpdatedTime);
+  }
+
+  // display word counts (safe if elements are missing)
+  displayTotalWordCount();
+});
 </script>
