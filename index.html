@@ -385,5 +385,92 @@ body::after {
     line-height: 1.6;
 }
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Word Count Fix</title>
+  <style>
+    /* tiny styles just for the demo */
+    body { font-family: Arial, sans-serif; padding: 20px; background:#000;color:#fff }
+    .content-section { background: rgba(255,255,255,0.03); padding:16px; border-radius:6px; margin-bottom:12px; }
+    #totalWordCount { margin-top: 10px; font-weight:700; }
+    button { margin-top:8px; padding:6px 10px; border-radius:5px; border:none; cursor:pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>ENG0018 — Conference paper (demo)</h1>
+
+  <div class="content-section" id="Abstract_InText">
+    <h3>Abstract</h3>
+    <p> This page summarises how the universe expands; to start with, the Hubble's discovery that galaxies are moving away from us when their light is redshifted. This shows how the scale factor and Friedmann's equations display the growth of the Universe and illustrate the different possible shapes of the universe. It also highlights how matter density and dark energy can change the universe's evolution and its potential long-term fate. </p>
+  </div>
+
+  <!-- IMPORTANT: these IDs are used by the script -->
+  <div class="content-section" id="Introduction_InText">
+    <h3>Introduction</h3>
+    <p>Our understanding of the universe has transformed dramatically since the early twentieth century. Einstein's theory provides a new framework for describing gravity. On the other hand, Edwin Hubble's observations revealed the true scale of the cosmos. Galaxies beyond the Milky Way were moving away from us due to redshift, indicating that the universe is expanding. Hubble's law forms the foundations of modern cosmology.</p>
+  </div>
+
+  <div class="content-section" id="Analysis_InText">
+    <h3>Analysis and Discussion</h3>
+    <p>Hubble’s Law and Redshift: Math of the Expanding Universe. The Doppler shift is the change in wavelength of observed light due to relative motion between source and observer. After analysing the redshifts of Cepheids, Hubble concluded galaxies are receding — v = H₀ D — where H₀ is the Hubble constant.</p>
+  </div>
+
+  <!-- Place to show the total -->
+  <div id="totalWordCount">Total word count: 0</div>
+  <button id="recalcBtn">Recalculate word count</button>
+
+  <script>
+    // Safe word-count routine: counts words from chosen element IDs and updates #totalWordCount
+    (function() {
+      const sectionIds = ['Introduction_InText', 'Analysis_InText']; // change/add IDs as needed
+
+      function getTextFromId(id) {
+        const el = document.getElementById(id);
+        return el ? el.textContent : '';
+      }
+
+      function countWords(text) {
+        // Normalize whitespace, remove multiple spaces/newlines and split
+        const trimmed = String(text).trim();
+        if (trimmed === '') return 0;
+        // split on any whitespace sequence
+        const words = trimmed.split(/\s+/);
+        return words.length;
+      }
+
+      function updateTotal() {
+        let total = 0;
+        const details = {}; // optional: per-section counts if you want to show them
+        for (const id of sectionIds) {
+          const txt = getTextFromId(id);
+          const c = countWords(txt);
+          details[id] = c;
+          total += c;
+        }
+        const out = document.getElementById('totalWordCount');
+        if (out) {
+          out.textContent = `Total word count: ${total} (breakdown: ${JSON.stringify(details)})`;
+        } else {
+          console.log('Total word count:', total, details);
+        }
+      }
+
+      // run on load
+      window.addEventListener('DOMContentLoaded', updateTotal);
+      // also bind to button for recompute after edits
+      const btn = document.getElementById('recalcBtn');
+      if (btn) btn.addEventListener('click', updateTotal);
+
+      // expose for debugging if needed
+      window._updateWordCount = updateTotal;
+    })();
+  </script>
+
+</body>
+</html>
 
      
