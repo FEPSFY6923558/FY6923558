@@ -26,6 +26,7 @@
 
   </style>
 
+
   <style>
 
     p.ex1 {
@@ -34,11 +35,14 @@
 
   </style>
 
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
   <link
     rel="stylesheet"
     href="https://www.w3schools.com/w3css/4/w3.css">
+
 
   <style>
 
@@ -695,8 +699,10 @@
       const username = "nr0025";
       const repo = "FY0025";
 
+
       const url =
         `https://api.github.com/repos/${username}/${repo}/commits`;
+
 
       try {
 
@@ -712,6 +718,7 @@
 
         });
 
+
         if (!response.ok) {
 
           throw new Error(
@@ -722,12 +729,15 @@
 
         }
 
+
         const commits = await response.json();
+
 
         if (commits && commits.length > 0) {
 
           const lastCommitDate =
             new Date(commits[0].commit.committer.date);
+
 
           document.getElementById("last-updated").innerText =
 
@@ -755,6 +765,7 @@
 
         );
 
+
         document.getElementById("last-updated").innerText =
 
           "Error fetching update time. Please check the repository details.";
@@ -769,7 +780,9 @@
       document.getElementById("last-updated").innerText =
         "Verifying...";
 
+
       await getLastUpdatedTime();
+
 
       alert(
 
@@ -795,11 +808,14 @@
       const text =
         document.getElementById(sectionId).textContent;
 
+
       const wordArray =
         text.trim().split(/\s+/);
 
+
       const wordCount =
         wordArray.length;
+
 
       return wordCount;
 
@@ -812,13 +828,16 @@
 
         displayWordCount("Introduction_InText");
 
+
       const AnalysisCount =
 
         displayWordCount("Analysis_InText");
 
+
       const totalWordCount =
 
         IntroductionCount + AnalysisCount;
+
 
       document.getElementById("totalWordCount").innerText =
 
