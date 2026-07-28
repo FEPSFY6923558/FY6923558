@@ -4,857 +4,799 @@
 
 <head>
 
-  <title>The Mathematics behind the Expanding Universe</title>
+<img src="WebBanner2023.png" alt="Banner" width="1200" height="300">
 
-  <style>
+<h1><b>ENG0018 Computer Laboratory 2025/26</b></h1>
 
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 35%;
-    }
+<h2>Student URN: 6923558</h2>
 
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
+<hr>
 
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
+<h2 style="font-family:calibri;">
+<b>Conference paper: The Mathematics behind the Expanding Universe</b>
+</h2>
 
-  </style>
+<hr>
 
+<style>
 
-  <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 35%;
+}
 
-    p.ex1 {
-      margin-left: 250px;
-    }
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
 
-  </style>
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 
+</style>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
 
+p.ex1 {
+  margin-left: 250px;
+}
 
-  <link
-    rel="stylesheet"
-    href="https://www.w3schools.com/w3css/4/w3.css">
+</style>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    .mySlides {
-      display: none;
-    }
+<style>
 
-  </style>
+.mySlides {
+  display: none;
+}
+
+</style>
 
 </head>
 
+<body style="background-color:#FFFFFF;margin-left:50px;">
 
-<body style="background-color:#FFFFFF; margin-left:50px;">
 
+<table>
 
-  <img
-    src="WebBanner2023.png"
-    alt="University of Surrey banner"
-    width="1200"
-    height="300">
+<tr>
 
+<th>
+<h3>Table of contents</h3>
+</th>
 
-  <h1>
-    <b>ENG0018 Computer Laboratory 2025/26</b>
-  </h1>
+</tr>
 
-  <h2>
-    Student URN: 6923558
-  </h2>
+<tr>
 
+<td>
+<a href="#Abstract">Abstract</a>
+</td>
 
-  <hr>
+</tr>
 
+<tr>
 
-  <h2 style="font-family:calibri;">
-    <b>
-      Conference paper: The Mathematics behind the Expanding Universe
-    </b>
-  </h2>
+<td>
+<a href="#Introduction">Introduction</a>
+</td>
 
+</tr>
 
-  <hr>
+<tr>
 
+<td>
+<a href="#Analysis and discussion">Analysis and discussion</a>
+</td>
 
-  <table>
+</tr>
 
-    <tr>
-      <th>
-        <h3>Table of contents</h3>
-      </th>
-    </tr>
+<tr>
 
-    <tr>
-      <td>
-        <a href="#Abstract">Abstract</a>
-      </td>
-    </tr>
+<td>
+<a href="#Universe table">Universe geometry table</a>
+</td>
 
-    <tr>
-      <td>
-        <a href="#Introduction">Introduction</a>
-      </td>
-    </tr>
+</tr>
 
-    <tr>
-      <td>
-        <a href="#Analysis and discussion">
-          Analysis and discussion
-        </a>
-      </td>
-    </tr>
+<tr>
 
-    <tr>
-      <td>
-        <a href="#Universe table">
-          Universe geometry table
-        </a>
-      </td>
-    </tr>
+<td>
+<a href="#References">References</a>
+</td>
 
-    <tr>
-      <td>
-        <a href="#References">References</a>
-      </td>
-    </tr>
+</tr>
 
-    <tr>
-      <td>
-        <a href="#Presentation">Presentation</a>
-      </td>
-    </tr>
+<tr>
 
-  </table>
+<td>
+<a href="#Presentation">Presentation</a>
+</td>
 
+</tr>
 
-  <hr>
+</table>
 
 
-  <h3 id="Abstract">Abstract</h3>
+<hr>
 
-  <p class="ex1">
 
-    This page summarises how the universe expands; to start with,
-    Hubble's discovery that galaxies are moving away from us when
-    their light is redshifted.
+<h3 id="Abstract">Abstract</h3>
 
-    This shows how the scale factor and Friedmann's equations display
-    the growth of the Universe and illustrate the different possible
-    shapes of the universe.
+<p class="ex1">
 
-    It also highlights how matter density and dark energy can change
-    the universe's evolution and its potential long-term fate.
+This page summarises how the universe expands, beginning with
+Hubble's discovery that galaxies are moving away from us when
+their light is redshifted.
 
-  </p>
+It shows how the scale factor and Friedmann's equations describe
+the growth of the Universe and illustrate its different possible
+shapes.
 
+It also highlights how matter density and dark energy can change
+the Universe's evolution and its potential long-term fate.
 
-  <hr>
+</p>
 
 
-  <h3 id="Introduction">Introduction</h3>
+<hr>
 
-  <p
-    class="ex1"
-    id="Introduction_InText">
 
-    Our understanding of the universe has transformed dramatically
-    since the early twentieth century.
+<h3 id="Introduction">Introduction</h3>
 
-    Einstein's theory provides a new framework for describing gravity.
-    On the other hand, Edwin Hubble's observations revealed the true
-    scale of the cosmos.
+<p class="ex1" id="Introduction_InText">
 
-    Galaxies beyond the Milky Way were moving away from us due to
-    redshift, indicating that the universe is expanding.
+Our understanding of the universe has transformed dramatically
+since the early twentieth century.
 
-    Hubble's law forms the foundations of modern cosmology.
+Einstein's theory provided a new framework for describing gravity.
+Edwin Hubble's observations then revealed the true scale of the
+cosmos.
 
-    Building on these ideas, scientists utilise mathematical tools
-    such as Friedmann's equations and the scale factor to illustrate
-    how the universe expands and how its geometry is either flat,
-    open or closed, depending on its density.
+Galaxies beyond the Milky Way were moving away from us, as shown
+by their redshift, indicating that the universe is expanding.
 
-    These ideas allow us to explore how the universe has evolved and
-    what its ultimate fate may be.
+Hubble's law forms one of the foundations of modern cosmology.
 
-  </p>
+Building on these ideas, scientists use mathematical tools such
+as Friedmann's equations and the scale factor to illustrate how
+the universe expands and how its geometry may be flat, open or
+closed, depending on its density.
 
+These ideas allow us to explore how the universe has evolved and
+what its ultimate fate may be.
 
-  <hr>
+</p>
 
 
-  <div id="Analysis_InText">
+<hr>
 
 
-    <h3 id="Analysis and discussion">
-      Analysis and discussion
-    </h3>
+<div id="Analysis_InText">
 
 
-    <h2>
-      Hubble's Law and Redshift:
-      Mathematics of the Expanding Universe
-    </h2>
+<h3 id="Analysis and discussion">
+Analysis and discussion
+</h3>
 
 
-    <p class="ex1">
+<h2>
+Hubble's Law and Redshift: Mathematics of the Expanding Universe
+</h2>
 
-      <a href="#PhysicsUniverseReference">
-        The Physics of the Universe (no date)
-      </a>
 
-      describes that Albert Einstein had formulated his theory of
-      gravity in the early twentieth century, when astronomers knew
-      only of our own galaxy.
+<p class="ex1">
 
-      Einstein assumed the universe has the same broad properties
-      everywhere and that it looks the same in every direction,
-      regardless of where an observer is.
+<a href="#PhysicsUniverseReference">
+The Physics of the Universe (no date)
+</a>
 
-      In 1925, the American astronomer Edwin Hubble shocked the
-      scientific community by showing that the universe was more
-      than just the Milky Way galaxy.
+describes how Albert Einstein formulated his theory of gravity in
+the early twentieth century, when astronomers knew only of our own
+galaxy.
 
-      Later, in 1929, Hubble discovered that the light from these
-      other galaxies was slightly shifted towards the red end of the
-      spectrum due to the Doppler effect.
+Einstein assumed that the universe has the same broad properties
+everywhere and looks the same in every direction, regardless of
+the observer's position.
 
-      This shift is called redshift. Redshift occurs when the
-      wavelength of light increases as the source of light moves
-      away from the observer.
+In 1925, the American astronomer Edwin Hubble changed the
+scientific view of the cosmos by showing that the universe
+contained more than the Milky Way.
 
-      The Doppler shift is the change in the wavelength of observed
-      light due to relative motion between the wave source and the
-      observer.
+Later, in 1929, Hubble discovered that light from other galaxies
+was shifted towards the red end of the spectrum.
 
-      After analysing the redshifts of galaxies and using observations
-      of Cepheid variable stars, Hubble concluded that galaxies and
-      clusters of galaxies were moving apart and therefore the
-      universe was expanding.
+This effect is called redshift and occurs when the wavelength of
+light increases as its source moves away from the observer.
 
-      Hubble's law shows that in an expanding universe, a galaxy's
-      recession velocity is directly proportional to its distance.
+The Doppler shift is the change in the observed wavelength caused
+by relative motion between a wave source and an observer.
 
-      <a href="#StarChildReference">
-        The StarChild Team (no date)
-      </a>
+After analysing the redshifts of galaxies and using observations
+of Cepheid variable stars, Hubble concluded that galaxies and
+clusters of galaxies were moving apart and that the universe was
+expanding.
 
-      states that Hubble's law is usually expressed as:
+<a href="#StarChildReference">
+The StarChild Team (no date)
+</a>
 
-    </p>
+states that Hubble's law is usually expressed as:
 
+</p>
 
-    <p class="ex1">
 
-      <math xmlns="http://www.w3.org/1998/Math/MathML">
+<p class="ex1">
 
-        <mi>v</mi>
+<math xmlns="http://www.w3.org/1998/Math/MathML">
 
-        <mo>=</mo>
+<mrow>
 
-        <msub>
-          <mi>H</mi>
-          <mn>0</mn>
-        </msub>
+<mi>v</mi>
 
-        <mi>D</mi>
+<mo>=</mo>
 
-      </math>
+<msub>
 
-    </p>
+<mi>H</mi>
 
+<mn>0</mn>
 
-    <p class="ex1">
+</msub>
 
-      In this equation, v is the recession velocity, D is the
-      distance to the galaxy and H0 is the Hubble constant that
-      relates them.
+<mi>D</mi>
 
-      The source used in this article gives an approximate value of
-      65 km/s/Mpc.
+</mrow>
 
-      One megaparsec is approximately three million parsecs, while
-      one parsec is approximately 3.26 light-years.
+</math>
 
-      Using this value, a galaxy one megaparsec away would be moving
-      away at approximately 65 kilometres per second.
+</p>
 
-    </p>
 
+<p class="ex1">
 
-    <h2>
-      The Scale Factor: Measuring How the Universe Grows
-    </h2>
+Here, <i>v</i> is the recession velocity, <i>D</i> is the
+distance to the galaxy and <i>H</i><sub>0</sub> is the Hubble
+constant.
 
+The source used in this article gives an approximate value of
+65 km/s/Mpc.
 
-    <p class="ex1">
+One megaparsec is approximately three million parsecs, and one
+parsec is approximately 3.26 light-years.
 
-      <a href="#PeacockReference">
-        Peacock (1999)
-      </a>
+This means that, using that value, a galaxy one megaparsec away
+would be moving away at approximately 65 kilometres per second.
 
-      explains that the equation for the scale factor's motion can be
-      derived in a quasi-Newtonian manner.
+</p>
 
-      If we consider a sphere centred on an arbitrary point, the
-      motion of a point at the edge of the sphere will be influenced
-      by the mass contained inside it.
 
-      A differential equation can then be written to express
-      conservation of energy.
+<h2>
+The Scale Factor: Measuring How the Universe Grows
+</h2>
 
-      This leads to a form of Friedmann's equation, which describes
-      the relationship between expansion, gravity, matter and the
-      geometry of the universe.
 
-      The Friedmann equation shows that a universe that is spatially
-      closed, with k = +1, has negative total energy.
+<p class="ex1">
 
-      In a simple matter-dominated model, the expansion could
-      eventually halt because of gravity and the universe could
-      re-collapse.
+<a href="#PeacockReference">
+Peacock (1999)
+</a>
 
-      An unbound model is spatially open, with k = -1, and can
-      continue expanding.
+explains that the equation for the scale factor's motion can be
+derived in a quasi-Newtonian manner.
 
-      The behaviour can be compared to a cannonball fired vertically
-      against Earth's gravity.
+Consider a sphere centred on an arbitrary point.
 
-      Earth's gravity defines an escape velocity for projectiles, so
-      an object travelling above escape velocity continues moving
-      away.
+The motion of a point at the edge of the sphere is influenced by
+the mass inside it.
 
-    </p>
+A differential equation can then be written to express
+conservation of energy.
 
+This leads to a form of the Friedmann equation, which describes
+the relationship between expansion, gravity, matter and the
+geometry of the universe.
 
-    <h2>
-      Flat, Open or Closed?
-      The Geometry of the Universe
-    </h2>
+The Friedmann equation shows that a spatially closed universe,
+with <i>k</i> = +1, has negative total energy.
 
+In a simple matter-dominated model, its expansion could
+eventually halt and reverse.
 
-    <p class="ex1">
+A spatially open universe, with <i>k</i> = -1, is unbound and
+can continue expanding.
 
-      <a href="#BerkeleyReference">
-        Lawrence Berkeley National Laboratory (2000)
-      </a>
+The behaviour can be compared to a projectile fired vertically
+against Earth's gravity.
 
-      suggests that when astronomers describe the universe as flat,
-      open or closed, they are referring to the shape or curvature
-      of space-time and its relationship with the universe's density.
+A projectile below escape velocity returns, whereas one above
+escape velocity continues travelling away.
 
-      A universe with positive curvature can be described as closed.
+</p>
 
-      In two dimensions, positive curvature can be compared to the
-      surface of a sphere.
 
-      An open universe has negative curvature, which can be compared
-      to a saddle-shaped surface on which parallel lines diverge.
+<h2>
+Flat, Open or Closed? The Geometry of the Universe
+</h2>
 
-      A flat two-dimensional universe can be compared to a sheet of
-      paper on which parallel lines remain parallel.
 
-      Many independent observations indicate that the universe is
-      close to spatially flat.
+<p class="ex1">
 
-      Inflation theory states that a small portion of the early
-      universe underwent extremely rapid expansion shortly after the
-      Big Bang.
+<a href="#BerkeleyReference">
+Lawrence Berkeley National Laboratory (2000)
+</a>
 
-      This helps to explain the smoothness and homogeneity of regions
-      of space that would otherwise never have been in contact.
+explains that when astronomers describe the universe as flat,
+open or closed, they are referring to the curvature of space-time
+and its relationship with the density of the universe.
 
-      If the universe is flat and the density of matter is too low
-      to provide the required total density, another component is
-      needed.
+A closed universe has positive curvature and can be compared in
+two dimensions to the surface of a sphere.
 
-      This component is commonly associated with the cosmological
-      constant or another form of dark energy.
+An open universe has negative curvature and can be compared to a
+saddle, on which parallel lines diverge.
 
-      Dark energy can cause the expansion of the universe to
-      accelerate.
+A flat universe can be compared to a sheet of paper, on which
+parallel lines remain parallel.
 
-    </p>
+Many observations indicate that the universe is close to
+spatially flat.
 
+Inflation theory proposes that a small region of the early
+universe underwent extremely rapid expansion shortly after the
+Big Bang.
 
-    <h2>
-      The Fate of the Universe:
-      Mathematics Predicts the End
-    </h2>
+This helps to explain the large-scale smoothness and homogeneity
+of regions that would otherwise not have been in causal contact.
 
+If the universe is flat but its matter density is too low to
+provide the required total density, another component is needed.
 
-    <p class="ex1">
+This component is commonly associated with dark energy or the
+cosmological constant.
 
-      <a href="#NASAFateReference">
-        NASA Goddard Space Flight Center (no date)
-      </a>
+Dark energy can cause the expansion of the universe to
+accelerate.
 
-      explains that possible futures for the universe include endless
-      expansion and collapse.
+</p>
 
-      The evolution of the universe depends on the relationship
-      between the momentum of expansion and the gravitational effects
-      of its matter and energy.
 
-      The current expansion rate is connected to the Hubble constant,
-      while gravitational behaviour depends on the density and
-      pressure of the universe's contents.
+<h2>
+The Fate of the Universe: Mathematics Predicts the End
+</h2>
 
-      If the density is below the critical density in a simple model,
-      there may not be enough gravitational attraction to stop the
-      expansion.
 
-      The universe could continue expanding and cooling, leading to
-      a possible future known as the Big Freeze or Big Chill.
+<p class="ex1">
 
-      If the density is greater than the critical density and no
-      other component prevents collapse, gravity could eventually
-      stop the expansion and reverse it.
+<a href="#NASAFateReference">
+NASA Goddard Space Flight Center (no date)
+</a>
 
-      This possible outcome is called the Big Crunch.
+explains that possible futures for the universe include endless
+expansion and collapse.
 
-      Modern cosmological models must also consider dark energy,
-      because accelerating expansion changes the relationship between
-      the universe's geometry and its final fate.
+The evolution of the universe depends on the relationship between
+its expansion and the gravitational effects of its matter and
+energy.
 
-    </p>
+The expansion rate is connected to the Hubble constant, while
+gravitational behaviour depends on the density and pressure of
+the universe's contents.
 
+If the density is below the critical density in a simple model,
+there may not be enough gravitational attraction to stop the
+expansion.
 
-    <h3 id="Universe table">
-      Table 1: Comparison of Possible Universe Geometries
-    </h3>
+The universe could continue expanding and cooling, leading to a
+future commonly called the Big Freeze or Big Chill.
 
+If the density is greater than the critical density and no other
+component prevents collapse, gravity could eventually stop the
+expansion and reverse it.
 
-    <table>
+This possible outcome is called the Big Crunch.
 
-      <tr>
+Modern cosmological models must also account for dark energy,
+because an accelerating expansion changes the connection between
+geometry and the universe's final fate.
 
-        <th>
-          Type of universe
-        </th>
+</p>
 
-        <th>
-          Curvature
-        </th>
 
-        <th>
-          Simple comparison
-        </th>
+<h3 id="Universe table">
+Table 1: Comparison of Possible Universe Geometries
+</h3>
 
-        <th>
-          Possible behaviour
-        </th>
 
-      </tr>
+<table>
 
+<tr>
 
-      <tr>
+<th>
+Type of universe
+</th>
 
-        <td>
-          Closed
-        </td>
+<th>
+Curvature
+</th>
 
-        <td>
-          Positive curvature
-        </td>
+<th>
+Simple comparison
+</th>
 
-        <td>
-          Surface of a sphere
-        </td>
+<th>
+Possible behaviour
+</th>
 
-        <td>
-          Expansion may eventually stop and reverse if gravity
-          dominates.
-        </td>
+</tr>
 
-      </tr>
 
+<tr>
 
-      <tr>
+<td>
+Closed
+</td>
 
-        <td>
-          Flat
-        </td>
+<td>
+Positive curvature, <i>k</i> = +1
+</td>
 
-        <td>
-          Zero curvature
-        </td>
+<td>
+Surface of a sphere
+</td>
 
-        <td>
-          Flat sheet of paper
-        </td>
+<td>
+Expansion may eventually stop and reverse if gravity dominates.
+</td>
 
-        <td>
-          Its development depends on its matter and energy content.
-        </td>
+</tr>
 
-      </tr>
 
+<tr>
 
-      <tr>
+<td>
+Flat
+</td>
 
-        <td>
-          Open
-        </td>
+<td>
+Zero curvature, <i>k</i> = 0
+</td>
 
-        <td>
-          Negative curvature
-        </td>
+<td>
+Flat sheet of paper
+</td>
 
-        <td>
-          Saddle-shaped surface
-        </td>
+<td>
+Its development depends on its matter and energy content.
+</td>
 
-        <td>
-          Expansion can continue indefinitely in a simple model.
-        </td>
+</tr>
 
-      </tr>
 
-    </table>
+<tr>
 
+<td>
+Open
+</td>
 
-    <p class="ex1">
+<td>
+Negative curvature, <i>k</i> = -1
+</td>
 
-      <b>Table 1:</b>
+<td>
+Saddle-shaped surface
+</td>
 
-      Author's summary comparing closed, flat and open universe
-      geometries, based on Peacock (1999) and Lawrence Berkeley
-      National Laboratory (2000).
+<td>
+Expansion can continue indefinitely in a simple model.
+</td>
 
-    </p>
+</tr>
 
+</table>
 
-  </div>
 
+<p class="ex1">
 
-  <hr>
+<b>Table 1:</b>
 
+Author's summary comparing closed, flat and open universe
+geometries, based on Peacock (1999) and Lawrence Berkeley
+National Laboratory (2000).
 
-  <h3 id="References">References</h3>
+</p>
 
 
-  <p class="ex1" id="PeacockReference">
+</div>
 
-    Peacock, J.A. (1999)
 
-    <i>
-      Cosmological Physics – Section 3.2:
-      Dynamics of the Expansion.
-    </i>
+<hr>
 
-    Cambridge University Press.
 
-    Available at:
+<h3 id="References">References</h3>
 
-    <a
-      href="https://ned.ipac.caltech.edu/level5/Peacock/Peacock3_2.html">
 
-      https://ned.ipac.caltech.edu/level5/Peacock/Peacock3_2.html
+<p class="ex1" id="PeacockReference">
 
-    </a>
+Peacock, J.A. (1999)
 
-    (Accessed: 5 November 2025).
+<i>
+Cosmological Physics – Section 3.2: Dynamics of the Expansion.
+</i>
 
-  </p>
+Cambridge University Press.
 
+Available at:
 
-  <p class="ex1" id="PhysicsUniverseReference">
+<a href="https://ned.ipac.caltech.edu/level5/Peacock/Peacock3_2.html">
 
-    The Physics of the Universe (no date)
+https://ned.ipac.caltech.edu/level5/Peacock/Peacock3_2.html
 
-    <i>
-      The Expanding Universe and Hubble's Law.
-    </i>
+</a>
 
-    Available at:
+(Accessed: 5 November 2025).
 
-    <a
-      href="https://www.physicsoftheuniverse.com/topics_bigbang_expanding.html">
+</p>
 
-      https://www.physicsoftheuniverse.com/topics_bigbang_expanding.html
 
-    </a>
+<p class="ex1" id="PhysicsUniverseReference">
 
-    (Accessed: 5 November 2025).
+The Physics of the Universe (no date)
 
-  </p>
+<i>
+The Expanding Universe and Hubble's Law.
+</i>
 
+Available at:
 
-  <p class="ex1" id="StarChildReference">
+<a href="https://www.physicsoftheuniverse.com/topics_bigbang_expanding.html">
 
-    The StarChild Team (no date)
+https://www.physicsoftheuniverse.com/topics_bigbang_expanding.html
 
-    <i>
-      Redshift and Hubble's Law.
-    </i>
+</a>
 
-    NASA/Goddard Space Flight Center.
+(Accessed: 5 November 2025).
 
-    Available at:
+</p>
 
-    <a
-      href="https://starchild.gsfc.nasa.gov/docs/StarChild/questions/redshift.html">
 
-      https://starchild.gsfc.nasa.gov/docs/StarChild/questions/redshift.html
+<p class="ex1" id="StarChildReference">
 
-    </a>
+The StarChild Team (no date)
 
-    (Accessed: 5 November 2025).
+<i>
+Redshift and Hubble's Law.
+</i>
 
-  </p>
+NASA/Goddard Space Flight Center.
 
+Available at:
 
-  <p class="ex1" id="BerkeleyReference">
+<a href="https://starchild.gsfc.nasa.gov/docs/StarChild/questions/redshift.html">
 
-    Lawrence Berkeley National Laboratory (2000)
+https://starchild.gsfc.nasa.gov/docs/StarChild/questions/redshift.html
 
-    <i>
-      Shape of the Universe: Closed, Open, or Flat.
-    </i>
+</a>
 
-    Available at:
+(Accessed: 5 November 2025).
 
-    <a
-      href="https://www2.lbl.gov/Science-Articles/Archive/SNAP-3.html">
+</p>
 
-      https://www2.lbl.gov/Science-Articles/Archive/SNAP-3.html
 
-    </a>
+<p class="ex1" id="BerkeleyReference">
 
-    (Accessed: 2 December 2025).
+Lawrence Berkeley National Laboratory (2000)
 
-  </p>
+<i>
+Shape of the Universe: Closed, Open, or Flat.
+</i>
 
+Available at:
 
-  <p class="ex1" id="NASAFateReference">
+<a href="https://www2.lbl.gov/Science-Articles/Archive/SNAP-3.html">
 
-    NASA Goddard Space Flight Center (no date)
+https://www2.lbl.gov/Science-Articles/Archive/SNAP-3.html
 
-    <i>
-      The Fate of the Universe.
-    </i>
+</a>
 
-    Available at:
+(Accessed: 2 December 2025).
 
-    <a
-      href="https://map.gsfc.nasa.gov/universe/uni_fate.html">
+</p>
 
-      https://map.gsfc.nasa.gov/universe/uni_fate.html
 
-    </a>
+<p class="ex1" id="NASAFateReference">
 
-    (Accessed: 2 December 2025).
+NASA Goddard Space Flight Center (no date)
 
-  </p>
+<i>
+The Fate of the Universe.
+</i>
 
+Available at:
 
-  <hr>
+<a href="https://map.gsfc.nasa.gov/universe/uni_fate.html">
 
+https://map.gsfc.nasa.gov/universe/uni_fate.html
 
-  <h3 id="Presentation">
-    Conference Presentation:
-    The Mathematics behind the Expanding Universe
-  </h3>
+</a>
 
+(Accessed: 2 December 2025).
 
-  <video
-    src="freecompress-ENG0018 Presentation.mp4"
-    width="800"
-    height="450"
-    controls>
+</p>
 
-  </video>
 
+<hr>
 
-  <div id="last-updated">
-    Loading last update time...
-  </div>
 
+<h3 id="Presentation">
+Conference Presentation: The Mathematics behind the Expanding Universe
+</h3>
 
-  <button
-    onclick="verifyLastUpdatedTime()"
-    style="display:block; margin:10px auto; padding:8px 16px;">
 
-    Verify Last Modified Time
+<video
+src="freecompress-ENG0018 Presentation.mp4"
+width="800"
+height="450"
+controls>
 
-  </button>
+</video>
 
 
-  <script>
+<div id="last-updated">
+Loading last update time...
+</div>
 
-    async function getLastUpdatedTime() {
 
-      const username = "nr0025";
-      const repo = "FY0025";
+<button
+onclick="verifyLastUpdatedTime()"
+style="display:block; margin:10px auto; padding:8px 16px;">
 
+Verify Last Modified Time
 
-      const url =
-        `https://api.github.com/repos/${username}/${repo}/commits`;
+</button>
 
 
-      try {
+<script>
 
-        const response = await fetch(url, {
+async function getLastUpdatedTime() {
 
-          method: "GET",
+const username = "nr0025";
 
-          headers: {
+const repo = "FY0025";
 
-            "Accept": "application/vnd.github.v3+json",
+const url =
+`https://api.github.com/repos/${username}/${repo}/commits`;
 
-          }
+try {
 
-        });
+const response = await fetch(url, {
 
+method: "GET",
 
-        if (!response.ok) {
+headers: {
 
-          throw new Error(
+"Accept": "application/vnd.github.v3+json",
 
-            `Error fetching data: ${response.status} - ${response.statusText}`
+}
 
-          );
+});
 
-        }
+if (!response.ok) {
 
+throw new Error(
+`Error fetching data: ${response.status} - ${response.statusText}`
+);
 
-        const commits = await response.json();
+}
 
+const commits = await response.json();
 
-        if (commits && commits.length > 0) {
+if (commits && commits.length > 0) {
 
-          const lastCommitDate =
-            new Date(commits[0].commit.committer.date);
+const lastCommitDate =
+new Date(commits[0].commit.committer.date);
 
+document.getElementById("last-updated").innerText =
+`Last Modified Time: ${lastCommitDate.toLocaleString()}`;
 
-          document.getElementById("last-updated").innerText =
+}
 
-            `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
+else {
 
-        }
+document.getElementById("last-updated").innerText =
+"No commits found in the repository.";
 
-        else {
+}
 
-          document.getElementById("last-updated").innerText =
+}
 
-            "No commits found in the repository.";
+catch (error) {
 
-        }
+console.error(
+"Error fetching the last updated time:",
+error
+);
 
-      }
+document.getElementById("last-updated").innerText =
+"Error fetching update time. Please check the repository details.";
 
-      catch (error) {
+}
 
-        console.error(
+}
 
-          "Error fetching the last updated time:",
 
-          error
+async function verifyLastUpdatedTime() {
 
-        );
+document.getElementById("last-updated").innerText =
+"Verifying...";
 
+await getLastUpdatedTime();
 
-        document.getElementById("last-updated").innerText =
+alert(
+"Last modified time has been successfully verified from GitHub API."
+);
 
-          "Error fetching update time. Please check the repository details.";
+}
 
-      }
+</script>
 
-    }
 
+<p id="totalWordCount"></p>
 
-    async function verifyLastUpdatedTime() {
 
-      document.getElementById("last-updated").innerText =
-        "Verifying...";
+<hr>
 
 
-      await getLastUpdatedTime();
+<script>
 
+function displayWordCount(sectionId, outputId) {
 
-      alert(
+const text =
+document.getElementById(sectionId).textContent;
 
-        "Last modified time has been successfully verified from GitHub API."
+const wordArray =
+text.trim().split(/\s+/);
 
-      );
+const wordCount =
+wordArray.length;
 
-    }
+return wordCount;
 
-  </script>
+}
 
 
-  <p id="totalWordCount"></p>
+function displayTotalWordCount() {
 
+const IntroductionCount =
+displayWordCount("Introduction_InText");
 
-  <hr>
+const AnalysisCount =
+displayWordCount("Analysis_InText");
 
+const totalWordCount =
+IntroductionCount + AnalysisCount;
 
-  <script>
+document.getElementById("totalWordCount").innerText =
+`Total word count: ${totalWordCount}`;
 
-    function displayWordCount(sectionId, outputId) {
+}
 
-      const text =
-        document.getElementById(sectionId).textContent;
 
+window.onload = function() {
 
-      const wordArray =
-        text.trim().split(/\s+/);
+getLastUpdatedTime();
 
+displayTotalWordCount();
 
-      const wordCount =
-        wordArray.length;
+};
 
-
-      return wordCount;
-
-    }
-
-
-    function displayTotalWordCount() {
-
-      const IntroductionCount =
-
-        displayWordCount("Introduction_InText");
-
-
-      const AnalysisCount =
-
-        displayWordCount("Analysis_InText");
-
-
-      const totalWordCount =
-
-        IntroductionCount + AnalysisCount;
-
-
-      document.getElementById("totalWordCount").innerText =
-
-        `Total word count: ${totalWordCount}`;
-
-    }
-
-
-    window.onload = function() {
-
-      getLastUpdatedTime();
-
-      displayTotalWordCount();
-
-    };
-
-  </script>
+</script>
 
 
 </body>
